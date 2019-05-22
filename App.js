@@ -63,13 +63,21 @@ export default class App extends React.Component {
   
   registerForPushNotificationsAsync();
   this._notificationSubscription = Notifications.addListener(this._handleNotification);
+  this.getDeviceId();
   }
   
+  
+  
+  getDeviceId = () => {
+    //Getting the Unique Device Id here
+    const deviceId = Expo.Constants.deviceId;
+    console.log('Unique device ID: ' + deviceId);
+  };
   
   _handleNotification = (notification) => {
 
     this.setState({notification: notification});
-        
+      
   };
 
   render() {
